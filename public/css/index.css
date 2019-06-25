@@ -1,0 +1,185 @@
+#container{
+	background: #DDDDDD;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+#nav{
+	background: #0092E0;
+	width: 15%;
+	height: 781px;
+	float: left;
+
+}
+#navtitle{
+	
+	color: #FFFFFF;
+	height: 6%;
+	width: 100%;
+	text-align: center;
+	size: 18px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+#navSubTitle{
+	
+	color: #FFFFFF;
+	height: 6%;
+	width: 100%;
+	text-align: center;
+	size: 12px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+
+}
+
+.navRowContainer{
+	
+	color: #FFFFFF;
+	height: 70px;
+	width: 100%;
+	text-align: center;
+}
+.navRowContainer:hover{
+	background: #037CBC;
+}
+.navRowIcon{
+	
+	height: 100%;
+	width: 35%;
+	float: left;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+
+}
+.navRowIcon img{
+	height: 50%;
+	width: 50%;
+
+}
+.navRowTitle{
+	
+	height: 80%;
+	width: 65%;
+	margin: 7px 0 0 0; 
+	float: left;
+	color: #FFFFFF;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+
+}
+
+#topBar{
+	width: 85%;
+	height: 80px;
+	
+	float: left;
+	
+}
+
+#topBarIcon{
+	width: 10%;
+	height: 100%;
+	
+	float: left;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+#topBarIcon img{
+	width: 50px;
+	height: 50px;
+}	
+#topBarTitle{
+	width: 90%;
+	height: 100%;
+	
+	color: #000000;
+	size: 10px;
+	float: left;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+
+}
+
+#dashboardContainer{
+	width: 85%;
+	height: 250px;
+	background: #CCCCCC;
+	float: left;
+}
+
+.dashboardSmall{
+	width: 25%;
+	height: 98%;
+	background: #ffffff;
+	border-style: solid;
+	border-color: #000000;
+	border-width: 1% 1% 1% 1%;
+	margin: 0 1% 0 1%;
+	float: left;
+}
+
+#dashboardLargeFirst{
+	width: 69%;
+	height: 98%;
+	
+	border-style: solid;
+	border-color: #000000;
+	border-width: 1% 1% 1% 1%;
+	margin: 0 1% 0 1%;
+	float: left;
+
+}
+#dashboardLargeSecond{
+	width: 69%;
+	height: 98%;
+	
+	border-style: solid;
+	border-color: #000000;
+	border-width: 1% 1% 1% 1%;
+	margin: 0 1% 0 1%;
+	float: left;
+
+}
+
+#dashboardinfoContainer{
+	width: 85%;
+	height: 150px;
+	background: #CCCCCC;
+	margin: 2% 0 0 0 ;
+	float: left;
+}
+
+.infoContainer{
+	width: 14%;
+	height: 98%;
+	background: #ffffff;
+	border-style: solid;
+	border-color: #000000;
+	border-width: 1% 1% 1% 1%;
+	margin: 0 1% 0 1%;
+	float: left;
+}
+
+
+#botdashboardContainer{
+	width: 85%;
+	height: 250px;
+	background: #CCCCCC;
+	float: left;
+	margin: 2% 0 0 0;
+}
