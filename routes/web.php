@@ -14,12 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/insert/values/{stationId}/{value}','ApiController@insertValues');
-Route::get('/get/wattsValue','HomeController@wattsValues');
-Route::get('/get/dataMetre','HomeController@getDataMetre');
-Route::get('/get/data','HomeController@getDatas');
-Route::get('/test/test', 'HomeController@test');
-Route::get('{station}','HomeController@index');
-
-
-
