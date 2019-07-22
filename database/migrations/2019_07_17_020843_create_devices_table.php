@@ -17,7 +17,7 @@ class CreateDevicesTable extends Migration
             $table->bigIncrements('id');
             $table->string('device_uuid');
             $table->char('device_status');
-            $table->date('creation_date');
+            $table->date('creation_date')->nullable();
             $table->unsignedBigInteger('appliance_id');
             $table->foreign('appliance_id')->references('id')->on('appliances');    
             $table->timestamps();
