@@ -17,5 +17,17 @@ class devices_TableSeeder extends Seeder
             'device_status' => 'Room 1 Light',
             'appliance_id' => 1,
         ]);
+
+        DB::table('devices')->insert([
+            'device_uuid' => '123Charger',
+            'device_status' => 'Room 1 Charger',
+            'appliance_id' => 2,
+        ]);
+
+        DB::table('devices')->insert([
+            'device_uuid' => '123Fan',
+            'device_status' => 'Room 1 Fan',
+            'appliance_id' => 3,
+        ]);
     }
 }

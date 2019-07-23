@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         	rooms_TableSeeder::class,
         	appliances_TableSeeder::class,
         	devices_TableSeeder::class,
+            measurements_TableSeeder::class,
         ]);
     }
 }
