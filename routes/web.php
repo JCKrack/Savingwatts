@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+Route::get('/','IndexController@index');
+Route::get('get/measurements','chartController@getAllMeasure');
 
 Auth::routes();
 

@@ -60,7 +60,8 @@
     <script src="js/fusioncharts/fusioncharts.js"></script>
     <script src="js/fusioncharts/fusioncharts.charts.js"></script>
     <script src="js/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
-    <script src="js/javascript.js"></script>
+    <!--<script src="js/javascript.js"></script>-->
+    <script src="js/index.js"></script>
     <script>
       
     </script>
