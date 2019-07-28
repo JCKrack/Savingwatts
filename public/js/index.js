@@ -1,7 +1,29 @@
 function init(){
 	console.log("Load Script");
 	getValuesToChart();
+  getDataIndex();
 }
+
+function getDataIndex()
+{
+  $.ajax({
+    type: 'GET', //THIS NEEDS TO BE GET
+    url: '/get/dataindex',
+    success: function (data) 
+    {
+      console.log(data);
+      updateIndexValues(data);
+    },
+    error: function(data) 
+    { 
+      console.log("Error de Json");
+    }
+    });
+
+}
+
+
+
 
 function getValuesToChart()
 {
@@ -123,4 +145,23 @@ function drawChart(){
       dataSource
     }).render();
   });
+}
+
+function updateIndexValues(indexValues)
+{
+  console.log("IndexValueUpdate");
+  document.getElementById('totalWatts').innerHTML = indexValues[0];
+  document.getElementById('bill').innerHTML = indexValues[1].toFixed(2);
+  document.getElementById('devicesHigh').innerHTML = "";
+  indexValues[2].forEach(function(element){
+    document.getElementById('devicesHigh').innerHTML += "<li>" + element.device_uuid + "</li>";
+  });
+  document.getElementById('devicesLow').innerHTML = "";
+  indexValues[3].forEach(function(element){
+    document.getElementById('devicesLow').innerHTML += "<li>" + element.device_uuid + "</li>";
+  });
+  document.getElementById('wattsDay').innerHTML = indexValues[4]
+  document.getElementById('wattsNight').innerHTML = indexValues[5]
+  document.getElementById('wattsPerWeek').innerHTML = indexValues[6]
+  document.getElementById('wattsPerWeekEnd').innerHTML = indexValues[7]
 }

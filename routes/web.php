@@ -13,6 +13,7 @@
 
 Route::get('/','IndexController@index');
 Route::get('get/measurements','chartController@getAllMeasure');
+Route::get('get/dataindex','IndexController@getDataIndex');
 
 Auth::routes();
 
