@@ -57,9 +57,12 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/fusioncharts/fusioncharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <!--<script src="js/fusioncharts/fusioncharts.js"></script>
     <script src="js/fusioncharts/fusioncharts.charts.js"></script>
-    <script src="js/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
+    <script src="js/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>-->
     <!--<script src="js/javascript.js"></script>-->
     <script src="js/index.js"></script>
     <script>

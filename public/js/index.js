@@ -33,7 +33,17 @@ function getValuesToChart()
 		success: function (data) 
 		{
 			console.log(data);
-			drawChart();
+      var seriesData = [];
+      var i = 0;
+        while(i < 3){
+          seriesData.push({
+          name:data[0][i][0],
+          data:[data[1][i]]
+          });
+          i++;
+        }
+      console.log(seriesData);
+			drawChart(data[2],seriesData);
 		},
 		error: function(data) 
 		{ 
@@ -43,108 +53,31 @@ function getValuesToChart()
 
 }
 
-function drawChart(){
-// Get current year for the copyright
-  $("#year").text(new Date().getFullYear());
-
-  // Chart
-  const dataSource = {
-    chart: {
-      caption: "Expense Analysis",
-      subcaption: "ACME Inc.",
-      xaxisname: "Region",
-      yaxisname: "Amount (In Watts)",
-      numberprefix: "",
-      exportenabled: "1",
-      theme: "fusion"
-    },
-    categories: [
-      {
-        category: [
-          {
-            label: "05/01/2019"
-          },
-          {
-            label: "05/10/2019"
-          },
-          {
-            label: "05/20/2019"
-          },
-          {
-            label: "05/30/2019"
-          }
-        ]
-      }
-    ],
-    dataset: [
-      {
-        seriesname: "Device 01",
-        renderas: "line",
-        data: [
-          {
-            value: "100"
-          },
-          {
-            value: "150"
-          },
-          {
-            value: "450"
-          },
-          {
-            value: "700"
-          }
-        ]
-      },
-      {
-        seriesname: "Device 02",
-        renderas: "line",
-        data: [
-          {
-            value: "50"
-          },
-          {
-            value: "350"
-          },
-          {
-            value: "400"
-          },
-          {
-            value: "500"
-          }
-        ]
-      },
-      {
-        seriesname: "All devices",
-        renderas: "area",
-        showanchors: "0",
-        data: [
-          {
-            value: "150"
-          },
-          {
-            value: "500"
-          },
-          {
-            value: "850"
-          },
-          {
-            value: "1200"
-          }
-        ]
-      }
-    ]
-  };
-
-  FusionCharts.ready(function() {
-    var myChart = new FusionCharts({
-      type: "mscombi2d",
-      renderAt: "chart-container",
-      width: "100%",
-      height: "100%",
-      dataFormat: "json",
-      dataSource
-    }).render();
-  });
+function drawChart(xSerie,mySeries){
+Highcharts.chart('chart-container', {
+  chart: {
+    type: 'area'
+  },
+  title: {
+    text: 'Area chart with negative values'
+  },
+  xAxis: {
+    categories: xSerie
+  },
+  credits: {
+    enabled: false
+  },
+  series: [[{
+      name: 'John',
+      data: [5, 3, 4, 7]
+    }, {
+      name: 'Jane',
+      data: [2, -2, -3, 2]
+    }, {
+      name: 'Joe',
+      data: [3, 4, 4, -2]
+    }]]
+});
 }
 
 function updateIndexValues(indexValues)

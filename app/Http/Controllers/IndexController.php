@@ -11,46 +11,74 @@ use Carbon\Carbon;
 class IndexController extends Controller
 {
     public function Index(){
-    	$currentMonth = Carbon::now()->format('Y-m');
+        //En las consultas de abajo, verificar si el primer where afecta, de lo contrario unicamente
+        //solo es cuestion de eliminarlo
+        
+        $currentMonth = Carbon::now()->format('Y-m');
+        $startEnd = 15;
+        $months = 1;
+        $nextMonth = Carbon::now()->addMonth(1)->format('Y-m');
+
     	$daysInMonth = Carbon::now()->daysInMonth;
-    	$totalWatts = Measurement::where('created_at','like',$currentMonth.'%')->sum('measure');
-    	$measurements = Measurement::all();
+        $measurements = Measurement::all();
+
+    	//$totalWatts = Measurement::where('created_at','like',$currentMonth.'%')->sum('measure');
+        $totalWatts = Measurement::whereBetween('created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])->sum('measure');
+
+        ///
     	$bill = (($totalWatts / 1000) * 0.617)/30;
 
     	$devicesHigh = Device::select('devices.id','device_uuid',DB::raw('SUM(measurements.measure) as maxwatts'))
     	->leftJoin('measurements','devices.id','=','measurements.device_id')
-    	->where('measurements.created_at','like',$currentMonth.'%')
+    	->whereBetween('measurements.created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
     	->GroupBy('devices.id','devices.device_uuid')
     	->orderBy('maxwatts','DESC')->Take(3)->get();
 
     	$devicesLow = Device::select('devices.id','device_uuid',DB::raw('SUM(measurements.measure) as minwatts'))
     	->leftJoin('measurements','devices.id','=','measurements.device_id')
-    	->where('measurements.created_at','like',$currentMonth.'%')
+    	->whereBetween('measurements.created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
     	->GroupBy('devices.id','devices.device_uuid')
     	->orderBy('minwatts','ASC')->Take(3)->get();
 
     	$wattsDay = Measurement::where('created_at','like',$currentMonth.'%')
     	->whereBetween('created_at',[
-    		new Carbon($currentMonth.'-1'.' 00:00:00'),
-    		new Carbon($currentMonth.'-'.$daysInMonth.' 23:59:59')
-    	])->whereBetween(DB::raw('HOUR(created_at)'),['9','23'])
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
+        ->whereBetween(DB::raw('HOUR(created_at)'),['9','23'])
     	->sum('measure');
 
     	$wattsNight = Measurement::where('created_at','like',$currentMonth.'%')
-    	->whereBetween('created_at',[
-    		new Carbon($currentMonth.'-1'.' 00:00:00'),
-    		new Carbon($currentMonth.'-'.$daysInMonth.' 23:59:59')
-    	])->whereBetween(DB::raw('HOUR(created_at)'),['0','9'])
+    	->whereBetween('measurements.created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
+        ->whereBetween(DB::raw('HOUR(created_at)'),['0','8'])
     	->sum('measure');
 
     	$wattsPerWeek = Measurement::where(DB::raw('WEEkDAY(created_at)'),'>=','0')
     	->where(DB::raw('WEEkDAY(created_at)'),'<=','4')
-    	->where('created_at','like',$currentMonth.'%')
+    	->whereBetween('measurements.created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
     	->sum('measure');
 
     	$wattsPerWeekEnd = Measurement::where(DB::raw('WEEkDAY(created_at)'),'>=','5')
     	->where(DB::raw('WEEkDAY(created_at)'),'<=','6')
-    	->where('created_at','like',$currentMonth.'%')
+    	->whereBetween('measurements.created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
     	->sum('measure');
 
     	return view('dashboard')->with(compact(
@@ -61,45 +89,70 @@ class IndexController extends Controller
 
     public function getDataIndex(){
         $currentMonth = Carbon::now()->format('Y-m');
+        $startEnd = 15;
+        $months = 1;
+        $nextMonth = Carbon::now()->addMonth(1)->format('Y-m');
+
         $daysInMonth = Carbon::now()->daysInMonth;
-        $totalWatts = Measurement::where('created_at','like',$currentMonth.'%')->sum('measure');
         $measurements = Measurement::all();
+
+        //$totalWatts = Measurement::where('created_at','like',$currentMonth.'%')->sum('measure');
+        $totalWatts = Measurement::whereBetween('created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])->sum('measure');
+
+        ///
         $bill = (($totalWatts / 1000) * 0.617)/30;
 
         $devicesHigh = Device::select('devices.id','device_uuid',DB::raw('SUM(measurements.measure) as maxwatts'))
         ->leftJoin('measurements','devices.id','=','measurements.device_id')
-        ->where('measurements.created_at','like',$currentMonth.'%')
+        ->whereBetween('measurements.created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
         ->GroupBy('devices.id','devices.device_uuid')
         ->orderBy('maxwatts','DESC')->Take(3)->get();
 
         $devicesLow = Device::select('devices.id','device_uuid',DB::raw('SUM(measurements.measure) as minwatts'))
         ->leftJoin('measurements','devices.id','=','measurements.device_id')
-        ->where('measurements.created_at','like',$currentMonth.'%')
+        ->whereBetween('measurements.created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
         ->GroupBy('devices.id','devices.device_uuid')
         ->orderBy('minwatts','ASC')->Take(3)->get();
 
         $wattsDay = Measurement::where('created_at','like',$currentMonth.'%')
         ->whereBetween('created_at',[
-            new Carbon($currentMonth.'-1'.' 00:00:00'),
-            new Carbon($currentMonth.'-'.$daysInMonth.' 23:59:59')
-        ])->whereBetween(DB::raw('HOUR(created_at)'),['9','23'])
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
+        ->whereBetween(DB::raw('HOUR(created_at)'),['9','23'])
         ->sum('measure');
 
         $wattsNight = Measurement::where('created_at','like',$currentMonth.'%')
-        ->whereBetween('created_at',[
-            new Carbon($currentMonth.'-1'.' 00:00:00'),
-            new Carbon($currentMonth.'-'.$daysInMonth.' 23:59:59')
-        ])->whereBetween(DB::raw('HOUR(created_at)'),['0','9'])
+        ->whereBetween('measurements.created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
+        ->whereBetween(DB::raw('HOUR(created_at)'),['0','8'])
         ->sum('measure');
 
         $wattsPerWeek = Measurement::where(DB::raw('WEEkDAY(created_at)'),'>=','0')
         ->where(DB::raw('WEEkDAY(created_at)'),'<=','4')
-        ->where('created_at','like',$currentMonth.'%')
+        ->whereBetween('measurements.created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
         ->sum('measure');
 
         $wattsPerWeekEnd = Measurement::where(DB::raw('WEEkDAY(created_at)'),'>=','5')
         ->where(DB::raw('WEEkDAY(created_at)'),'<=','6')
-        ->where('created_at','like',$currentMonth.'%')
+        ->whereBetween('measurements.created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])
         ->sum('measure');
 
         $indexData = [];
