@@ -32,18 +32,8 @@ function getValuesToChart()
 		url: '/get/measurements',
 		success: function (data) 
 		{
-			console.log(data);
-      var seriesData = [];
-      var i = 0;
-        while(i < 3){
-          seriesData.push({
-          name:data[0][i][0],
-          data:[data[1][i]]
-          });
-          i++;
-        }
-      console.log(seriesData);
-			drawChart(data[2],seriesData);
+      console.log(data);
+      drawChart(data);
 		},
 		error: function(data) 
 		{ 
@@ -53,30 +43,21 @@ function getValuesToChart()
 
 }
 
-function drawChart(xSerie,mySeries){
+function drawChart(mySeries){
 Highcharts.chart('chart-container', {
   chart: {
     type: 'area'
   },
   title: {
-    text: 'Area chart with negative values'
+    text: 'Area chart  negative values'
   },
   xAxis: {
-    categories: xSerie
+    categories: mySeries['dates']
   },
   credits: {
     enabled: false
   },
-  series: [[{
-      name: 'John',
-      data: [5, 3, 4, 7]
-    }, {
-      name: 'Jane',
-      data: [2, -2, -3, 2]
-    }, {
-      name: 'Joe',
-      data: [3, 4, 4, -2]
-    }]]
+  series: mySeries['series']
 });
 }
 
