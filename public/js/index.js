@@ -60,7 +60,7 @@ Highcharts.chart('chart-container', {
   },
 
   title: {
-    text: 'Area chart  negative values'
+    text: 'Area chart  negative values',
   },
   xAxis: {
     categories: mySeries['dates'],

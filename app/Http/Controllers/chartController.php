@@ -54,12 +54,6 @@ class chartController extends Controller
             'dates' => $dates,
             'series' => $series
         ];
-        //////////////////Seperador
-        //$fecha = new Carbon('2019-08-06 18:44');
-        //$measurement = Measurement::where('device_id','1')
-        //->where('created_at','like',$dates[0].'%')->get();
-        //where('created_at','like',new Carbon('2019-08-06 18:44').'%')->get();
-        ///// Borrar todo esto
     	return $array;
     }
 }
