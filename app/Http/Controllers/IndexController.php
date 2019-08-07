@@ -88,11 +88,17 @@ class IndexController extends Controller
     }
 
     public function getDataIndex(){
-        $currentMonth = Carbon::now()->format('Y-m');
+        if((int)Carbon::now()->format('d') > 15){
+            $currentMonth = Carbon::now()->format('Y-m');
+            $nextMonth = Carbon::now()->addMonth(1)->format('Y-m');
+        }else
+        {
+            $currentMonth = Carbon::now()->subMonth(1)->format('Y-m');
+            $nextMonth = Carbon::now()->format('Y-m');    
+        }
+        
         $startEnd = 15;
         $months = 1;
-        $nextMonth = Carbon::now()->addMonth(1)->format('Y-m');
-
         $daysInMonth = Carbon::now()->daysInMonth;
         $measurements = Measurement::all();
 
@@ -123,16 +129,14 @@ class IndexController extends Controller
         ->GroupBy('devices.id','devices.device_uuid')
         ->orderBy('minwatts','ASC')->Take(3)->get();
 
-        $wattsDay = Measurement::where('created_at','like',$currentMonth.'%')
-        ->whereBetween('created_at',[
-            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
-            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        $wattsDay = Measurement::whereBetween('measurements.created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 09:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:00:00')
         ])
         ->whereBetween(DB::raw('HOUR(created_at)'),['9','23'])
         ->sum('measure');
 
-        $wattsNight = Measurement::where('created_at','like',$currentMonth.'%')
-        ->whereBetween('measurements.created_at',[
+        $wattsNight = Measurement::whereBetween('measurements.created_at',[
             new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
             new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
         ])
@@ -156,7 +160,7 @@ class IndexController extends Controller
         ->sum('measure');
 
         $indexData = [];
-        array_push($indexData,$totalWatts,$bill,$devicesHigh,$devicesLow,$wattsDay,$wattsNight,$wattsPerWeek,$wattsPerWeekEnd);
+       array_push($indexData,$totalWatts,$bill,$devicesHigh,$devicesLow,$wattsDay,$wattsNight,$wattsPerWeek,$wattsPerWeekEnd);
         return $indexData;
     }
 }

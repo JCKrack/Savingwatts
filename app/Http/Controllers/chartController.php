@@ -16,13 +16,13 @@ class chartController extends Controller
         
         $currentDate = Carbon::now()
             ->setTimeZone('America/Tijuana')
-            ->format('Y-M-d H:i');
+            ->format('Y-m-d H:i');
         array_push($dates,$currentDate);
 
         for ($i=1; $i < 5 ; $i++) { 
             $currentDate = Carbon::now()
             ->setTimeZone('America/Tijuana')
-            ->subMinutes($i)->format('Y-M-d H:i');
+            ->subMinutes($i)->format('Y-m-d H:i');
             array_push($dates,$currentDate);
         }
 
@@ -33,13 +33,12 @@ class chartController extends Controller
         
         foreach ($devices as $device) {
             $array = [];
-            $measurements = Measurement::select('measure')
+            foreach ($dates as $date) {
+                $measurements = Measurement::select('measure','created_at','device_id')
                 ->where('device_id',$device->id)
-                ->take(3)
-                ->get();
-
-            foreach ($measurements as $measurement) {
-                array_push($array, $measurement->measure);
+                ->where('created_at','like',$date.'%')
+                ->sum('measure');
+                array_push($array, $measurements);
             }
 
             $serie = [
@@ -55,7 +54,12 @@ class chartController extends Controller
             'dates' => $dates,
             'series' => $series
         ];
-
+        //////////////////Seperador
+        //$fecha = new Carbon('2019-08-06 18:44');
+        //$measurement = Measurement::where('device_id','1')
+        //->where('created_at','like',$dates[0].'%')->get();
+        //where('created_at','like',new Carbon('2019-08-06 18:44').'%')->get();
+        ///// Borrar todo esto
     	return $array;
     }
 }

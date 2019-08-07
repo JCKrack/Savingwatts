@@ -1,7 +1,11 @@
 function init(){
 	console.log("Load Script");
-	getValuesToChart();
-  getDataIndex();
+  setInterval(function(){
+    getValuesToChart();
+    getDataIndex();
+    console.log("Actualizado");
+  },2000);
+
 }
 
 function getDataIndex()
@@ -45,14 +49,22 @@ function getValuesToChart()
 
 function drawChart(mySeries){
 Highcharts.chart('chart-container', {
-  chart: {
-    type: 'area'
+    plotOptions: {
+      series: {
+          animation: false
+      }
   },
+  chart: {
+    type: 'area',
+    zoomType: 'x'
+  },
+
   title: {
     text: 'Area chart  negative values'
   },
   xAxis: {
-    categories: mySeries['dates']
+    categories: mySeries['dates'],
+    reversed: true
   },
   credits: {
     enabled: false
