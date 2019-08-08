@@ -56,6 +56,7 @@
     <!-- Javascript files sources -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
+    <script src="js/moment.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/fusioncharts/fusioncharts.js"></script>
     <script src="js/fusioncharts/fusioncharts.charts.js"></script>

@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('dashboard');
 });
+
+Route::get('/search', function () {
+    return view('advanced_search');
+});
