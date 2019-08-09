@@ -6,7 +6,7 @@
     <div class="col-12 col-md-6 mb-3 mb-md-0">
       <div class="card w-100 bg-light text-dark">
         <div class="card-body">
-          <h4 class="card-title display-4">1,285</h4>
+          <h4 id="totalWatts" class="card-title display-4">{{ $totalWatts }}</h4>
           <p class="card-text lead">Watts consumidos.</p>
         </div>
       </div>
@@ -14,7 +14,7 @@
     <div class="col-12 col-md-6 mb-3 mb-md-0">
       <div class="card w-100 bg-light text-dark">
         <div class="card-body">
-          <h4 class="card-title display-4">$85.00</h4>
+          <h4 id="bill" class="card-title display-4">${{ number_format($bill,2) }}</h4>
           <p class="card-text lead">Aproximadamente.</p>
         </div>
       </div>
@@ -30,12 +30,10 @@
         <div class="card-body">
           <p class="card-text lead">
             Electrodomesticos de mayor consumo
-            <ol class="text-left lead">
-              <li>Lorem ipsum dolor sit.</li>
-              <li>Lorem ipsum dolor sit.</li>
-              <li>Lorem ipsum dolor sit.</li>
-              <li>Lorem ipsum dolor sit.</li>
-              <li>Lorem ipsum dolor sit.</li>
+            <ol id = "devicesHigh" class="text-left lead">
+              @foreach ($devicesHigh as $deviceHigh)
+                <li>{{ $deviceHigh->device_uuid }}</li>
+              @endforeach
             </ol>
           </p>
         </div>
@@ -46,12 +44,10 @@
           <div class="card-body">
               <p class="card-text lead">
                 Electrodomesticos de menor consumo
-                <ol class="text-left lead">
-                  <li>Lorem ipsum dolor sit.</li>
-                  <li>Lorem ipsum dolor sit.</li>
-                  <li>Lorem ipsum dolor sit.</li>
-                  <li>Lorem ipsum dolor sit.</li>
-                  <li>Lorem ipsum dolor sit.</li>
+                <ol id="devicesLow" class="text-left lead">
+                  @foreach ($devicesLow as $deviceLow)
+                    <li>{{ $deviceLow->device_uuid }}</li>
+                  @endforeach
                 </ol>
               </p>
             </div>
@@ -63,23 +59,23 @@
     <div class="col-12 col-md-3 mb-3 mb-md-0">
       <div class="card w-100 bg-light text-dark">
         <div class="card-body">
-          <h4 class="card-title display-4">835</h4>
-          <p class="card-text lead">Watts consumidos de<br>08 a 22 hrs.</p>
+          <h4 id="wattsDay" class="card-title display-4">{{ $wattsDay }}</h4>
+          <p class="card-text lead">Watts consumidos de<br> 09am a 12am hrs.</p>
         </div>
       </div>
     </div>
     <div class="col-12 col-md-3 mb-3 mb-md-0">
       <div class="card w-100 bg-light text-dark">
         <div class="card-body">
-          <h4 class="card-title display-4">450</h4>
-          <p class="card-text lead">Watts consumidos de<br>22 a 08 hrs.</p>
+          <h4 id="wattsNight" class="card-title display-4">{{ $wattsNight }}</h4>
+          <p class="card-text lead">Watts consumidos de<br>12am a 09am hrs.</p>
         </div>
       </div>
     </div>
     <div class="col-12 col-md-3 mb-3 mb-md-0">
       <div class="card w-100 bg-light text-dark">
         <div class="card-body">
-          <h4 class="card-title display-4">1,285</h4>
+          <h4 id="wattsPerWeek" class="card-title display-4">{{ $wattsPerWeek }}</h4>
           <p class="card-text lead">Watts consumidos de<br>entre semana.</p>
         </div>
       </div>
@@ -87,7 +83,7 @@
     <div class="col-12 col-md-3 mb-3 mb-md-0">
       <div class="card w-100 bg-light text-dark">
         <div class="card-body">
-          <h4 class="card-title display-4">1,285</h4>
+          <h4 id="wattsPerWeekEnd" class="card-title display-4">{{ $wattsPerWeekEnd }}</h4>
           <p class="card-text lead">Watts consumidos de<br>en fin de semana.</p>
         </div>
       </div>
