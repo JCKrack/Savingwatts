@@ -4,7 +4,7 @@
 <div class="container mt-5">
 	<h1 class="display-4">Advanced Search</h1>
 	<div class="row mt-5">
-		<div class="col-sm-12 col-md-4 col-lg-3 col-xl-3" style="border:1px solid #333">
+		<div class="col-sm-12 col-md-4 col-lg-3 col-xl-3">
 			<!-- Card form filter -->
 			<div class="card">
 				<div class="card-header">Filter</div>
@@ -49,7 +49,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-12 col-md-8 col-lg-9 col-xl-9" style="border:1px solid #333">
+		<div class="col-sm-12 col-md-8 col-lg-9 col-xl-9">
 			<div id="chart-container">FusionCharts XT will load here!</div>
 		</div>
 	</div>

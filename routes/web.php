@@ -13,8 +13,12 @@
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->name('home');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 Route::get('/search', function () {
     return view('advanced_search');
-});
+})->name('advanced_search');

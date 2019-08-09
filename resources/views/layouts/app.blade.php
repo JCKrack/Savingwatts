@@ -4,32 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>@yield('title')</title>
+    <title>@yield('title') - Savingwatts</title>
   </head>
   <body onload="init()">
     <!-- Navbar -->
       <nav class="navbar navbar-expand-sm navbar-dark bg-dark bm-3">
         <div class="container">
-        <a href="#" class="navbar-brand">Savingwatts</a>
+        <a href="{{ route('home') }}" class="navbar-brand">Savingwatts</a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a href="#" class="nav-link">Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Search</a>
+            <a href="{{ route('advanced_search') }}" class="nav-link">Search</a>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" >Account</a>
