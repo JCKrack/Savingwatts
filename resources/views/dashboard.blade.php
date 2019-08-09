@@ -1,4 +1,7 @@
 @extends('layouts.app')
+<!-- title -->
+@section('title') Dashboard @endsection
+<!-- content -->
 @section('content')
 <div class="container mt-5">
   <!--First cards-->

@@ -11,59 +11,52 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Dashboard</title>
+    <title>@yield('title')</title>
   </head>
   <body onload="init()">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark bm-3">
-      <div class="container">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark bm-3">
+        <div class="container">
         <a href="#" class="navbar-brand">Savingwatts</a>
-        <button
-          class="navbar-toggler"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-        >
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a href="#" class="nav-link">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Search</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link dropdown-toggle"
-                data-toggle="dropdown"
-                >Account</a
-              >
-              <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">Profile</a>
-                <a href="#" class="dropdown-item">Settings</a>
-                <a href="#" class="dropdown-item">Logout</a>
-              </div>
-            </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Search</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" >Account</a>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">Profile</a>
+              <a href="#" class="dropdown-item">Settings</a>
+              <a href="#" class="dropdown-item">Logout</a>
+            </div>
+          </li>
           </ul>
         </div>
-      </div>
-    </nav>
+        </div>
+      </nav>
     <!--Content-->
-        @yield('content')
+      @yield('content')
     <!-- Javascript files sources -->
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/moment.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrdap/bootstrap.min.js"></script>
+    <script src="js/moment/min/moment.min.js"></script>
+    <script src="js/moment/locale/es-us.js"></script>
+    <script src="js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="js/fusioncharts/fusioncharts.js"></script>
     <script src="js/fusioncharts/fusioncharts.charts.js"></script>
     <script src="js/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
+    <script src="js/popper.min.js"></script>
     <script src="js/javascript.js"></script>
-    <script>
-      
-    </script>
   </body>
+  <!-- Scripts -->
+    @yield('scripts')
 </html>
