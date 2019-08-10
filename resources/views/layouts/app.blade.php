@@ -64,16 +64,16 @@
         @yield('content')
         <!-- Javascript files sources -->
         <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <script src="js/moment/min/moment.min.js"></script>
+        <script src="js/moment/locale/es-us.js"></script>
+        <script src="js/tempusdominus-bootstrap-4.min.js"></script>
+        <script src="js/highcharts/highcharts.js"></script>
+        <script src="js/highcharts/modules/exporting.js"></script>
+        <script src="js/highcharts/modules/export-data.js"></script>
         <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-        <script src="https://code.highcharts.com/modules/export-data.js"></script>
-        <script src="js/fusioncharts/fusioncharts.js"></script>
-        <script src="js/fusioncharts/fusioncharts.charts.js"></script>
-        <script src="js/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
-        <!--<script src="js/javascript.js"></script>-->
         <script src="js/index.js"></script>
+        <!-- js obsoletos: js/fusioncharts/*,  js/javascript.js-->
     </body>
     <!-- Scripts -->
     @yield('scripts')
