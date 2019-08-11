@@ -70,13 +70,13 @@
         <script src="/js/iconify.min.js"></script>
         <script src="/js/bootstrap/bootstrap.min.js"></script>
         <script src="/js/moment/min/moment.min.js"></script>
-        <script src="/js/moment/locale/es-us.js"></script>
+        <script src="/js/moment/locale/en-ca.js"></script>
         <script src="/js/tempusdominus-bootstrap-4.min.js"></script>
         <script src="/js/highcharts/highcharts.js"></script>
         <script src="/js/highcharts/modules/exporting.js"></script>
         <script src="/js/highcharts/modules/export-data.js"></script>
         <script src="/js/popper.min.js"></script>
-        <!-- js obsoletos: js/fusioncharts/*,  js/javascript.js-->
+        <!-- js obsoletos: js/fusioncharts/*,  js/javascript.js, js/moment/locale/es-us.js-->
     </body>
     <!-- Scripts -->
     @yield('scripts')
