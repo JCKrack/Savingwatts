@@ -7,7 +7,6 @@ use App\Appliance;
 use App\Room;
 use App\Site;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class DeviceController extends Controller
 {
@@ -18,46 +17,6 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        $devices = Device::all();
-        $list = array();
-
-        foreach ($devices as $device) {
-            $appliance = Appliance::find($device->appliance_id);
-            $room = Room::find($appliance->room_id);
-            $site = Site::find($room->site_id);
-
-            $room = array(
-                'id' => $room->id,
-                'room_name' => $room->room_name,
-                'description' => $room->description,
-                'site' => $site,
-                'created_at' => $room->created_at,
-                'updated_at' => $room->created_at
-            );
-
-            $appliance = array(
-                'id' => $appliance->id,
-                'appliance_name' => $appliance->appliance_name,
-                'description' => $appliance->description,
-                'room' => $room,
-                'created_at' => $appliance->created_at,
-                'updated_at' => $appliance->updated_at
-            );
-
-            $device = array(
-                'id' => $device->id,
-                'device_uuid' => $device->device_uuid,
-                'device_status' => $device->device_status,
-                'creation_date' => $device->creation_date,
-                'appliance' => $appliance,
-                'created_at' => $device->created_at,
-                'updated_at' => $device->updated_at
-            );
-
-            array_push($list, $device);
-            
-        }
-
         return view('devices.index');
     }
 
