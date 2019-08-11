@@ -10,9 +10,9 @@
             integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
             crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="css/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css" />
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/tempusdominus-bootstrap-4.min.css" />
+        <link rel="stylesheet" href="/css/style.css" />
         <title>@yield('title') - Savingwatts</title>
     </head>
     <body onload="init()">
@@ -63,16 +63,16 @@
         <!--Content-->
         @yield('content')
         <!-- Javascript files sources -->
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/bootstrap/bootstrap.min.js"></script>
-        <script src="js/moment/min/moment.min.js"></script>
-        <script src="js/moment/locale/es-us.js"></script>
-        <script src="js/tempusdominus-bootstrap-4.min.js"></script>
-        <script src="js/highcharts/highcharts.js"></script>
-        <script src="js/highcharts/modules/exporting.js"></script>
-        <script src="js/highcharts/modules/export-data.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/index.js"></script>
+        <script src="/js/jquery-3.3.1.min.js"></script>
+        <script src="/js/bootstrap/bootstrap.min.js"></script>
+        <script src="/js/moment/min/moment.min.js"></script>
+        <script src="/js/moment/locale/es-us.js"></script>
+        <script src="/js/tempusdominus-bootstrap-4.min.js"></script>
+        <script src="/js/highcharts/highcharts.js"></script>
+        <script src="/js/highcharts/modules/exporting.js"></script>
+        <script src="/js/highcharts/modules/export-data.js"></script>
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/index.js"></script>
         <!-- js obsoletos: js/fusioncharts/*,  js/javascript.js-->
     </body>
     <!-- Scripts -->

@@ -33,3 +33,5 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('home');
 */
+
+Route::resource('devices', 'DeviceController');
