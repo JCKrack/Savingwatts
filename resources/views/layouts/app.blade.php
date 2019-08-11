@@ -76,7 +76,6 @@
         <script src="/js/highcharts/modules/exporting.js"></script>
         <script src="/js/highcharts/modules/export-data.js"></script>
         <script src="/js/popper.min.js"></script>
-        <script src="/js/index.js"></script>
         <!-- js obsoletos: js/fusioncharts/*,  js/javascript.js-->
     </body>
     <!-- Scripts -->
