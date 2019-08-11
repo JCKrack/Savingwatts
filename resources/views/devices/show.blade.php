@@ -4,13 +4,24 @@
 
 <div class="container mt-5">
 	<div class="row">
-		<div class="col-sm-12 col-lg-4 align-self-center">
+		<!-- Device Info -->
+		<div class="col-sm-6 col-md-6 col-lg-9 align-self-center">
 			<h1 class="display-4"> {{ $device->device_uuid }}</h1>
-			<h4>Location: _room_</h4>
+			<h4 class="">Location: _room_</h4>
+		</div>
+		<!-- Status -->
+		<div class="col-sm-6 col-md-6 col-lg-3">
+			<div class="p">
+				<div class="h4 text-center d-none d-sm-block">Current Status</div>
+				<div class="alert alert-success text-center">
+					<span class="iconify" data-icon="ant-design:play-circle-outline" data-inline="true"></span> Running
+				</div>
+			</div>
 		</div>
 	</div>
+	<!-- Device details -->
 	<div class="row my-2">
-		<div class="col-sm-6 col-lg-4">
+		<div class="col-sm-6 col-lg-4 mb-2">
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title text-center">Watts Usage</h4>
@@ -19,7 +30,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-6 col-lg-4">
+		<div class="col-sm-6 col-lg-4 mb-2">
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title text-center">Current Charges</h4>
@@ -28,7 +39,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-6 col-lg-4">
+		<div class="col-sm-6 col-lg-4 mb-2">
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title text-center">Device Uptime</h4>
@@ -38,7 +49,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="row mt-3">
+	<!-- Chart section -->
+	<div class="row">
 		<div class="col-lg-12">
 			<div class="card">
 				<div class="card-header">
@@ -52,7 +64,7 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<!-- graficas -->
+					<!-- Chart HERE -->
 					<div id="chart-container">FusionCharts XT will load here!</div>
 				</div>
 			</div>

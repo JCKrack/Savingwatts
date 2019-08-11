@@ -5,55 +5,81 @@
 <div class="container mt-5">
 	<div class="row">
 		<div class="col-sm-12 col-lg-4 align-self-center">
-			<h1 class="display-4">_deviceName_</h1>
-			<h4>Location: _room_</h4>
+			<h1 class="display-4">_locationName_</h1>
+			<h4>Site: _site_</h4>
 		</div>
 	</div>
 	<div class="row my-2">
-		<div class="col-sm-6 col-lg-4">
+		<div class="col-sm-6 col-lg-4 mb-3">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title text-center">Watts Usage</h4>
-					<h1 class="display-4 text-center">1,200</h1>
-					<p class="card-text text-center">Watts</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-lg-4">
-			<div class="card">
-				<div class="card-body">
-					<h4 class="card-title text-center">Current Charges</h4>
-					<h1 class="display-4 text-center">$72.00</h1>
-					<p class="card-text text-center">Mexican Pesos</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6 col-lg-4">
-			<div class="card">
-				<div class="card-body">
-					<h4 class="card-title text-center">Device Uptime</h4>
-					<h1 class="display-4 text-center">580</h1>
-					<p class="card-text text-center">Minutes</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row mt-3">
-		<div class="col-lg-12">
-			<div class="card">
-				<div class="card-header">
-					<div class="nav nav-tabs card-header-tabs">
-						<li class="nav-item">
-							<div class="nav-link active">Real Time</div>
-						</li>
-						<li class="nav-item">
-							<div class="nav-link">Historical</div>
-						</li>
+					<h3 class="card-title text-center">_deviceName_</h3>
+					<div class="d-flex justify-content-center">
+						<div class="p alert alert-success text-center">
+							Status: <span class="iconify" data-icon="ant-design:play-circle-outline" data-inline="true"></span> Running
+						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-4 mb-3">
+			<div class="card">
 				<div class="card-body">
-					<!-- graficas -->
-					<div id="chart-container">FusionCharts XT will load here!</div>
+					<h3 class="card-title text-center">_deviceName_</h3>
+					<div class="d-flex justify-content-center">
+						<div class="p alert alert-dark text-center">
+							Status: <span class="iconify" data-icon="fe:disabled" data-inline="true"></span> Stopped
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-4 mb-3">
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title text-center">_deviceName_</h3>
+					<div class="d-flex justify-content-center">
+						<div class="p alert alert-success text-center">
+							Status: <span class="iconify" data-icon="ant-design:play-circle-outline" data-inline="true"></span> Running
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-4 mb-3">
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title text-center">_deviceName_</h3>
+					<div class="d-flex justify-content-center">
+						<div class="p alert alert-danger text-center">
+							Status: <span class="iconify" data-icon="ic:outline-error-outline" data-inline="true"></span> Error
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-4 mb-3">
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title text-center">_deviceName_</h3>
+					<div class="d-flex justify-content-center">
+						<div class="p alert alert-success text-center">
+							Status: <span class="iconify" data-icon="ant-design:play-circle-outline" data-inline="true"></span> Running
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-lg-4 mb-3">
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title text-center">_deviceName_</h3>
+					<div class="d-flex justify-content-center">
+						<div class="p alert alert-warning text-center">
+							Status: <span class="iconify" data-icon="ant-design:warning-outline" data-inline="true"></span> Warning
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
