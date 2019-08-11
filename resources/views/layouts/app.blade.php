@@ -42,10 +42,8 @@
                             >
                         </li>
                         <li class="nav-item">
-                            <a
-                                href="{{ route('advanced_search') }}"
-                                class="nav-link"
-                                >Search</a
+                            <a href="{{ route('analytics') }}" class="nav-link"
+                                >Analytics</a
                             >
                         </li>
                         <li class="nav-item dropdown">

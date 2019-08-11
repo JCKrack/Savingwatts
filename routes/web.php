@@ -23,9 +23,9 @@ Route::get('/dashboard', 'IndexController@index', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/search', function () {
-    return view('advanced_search');
-})->name('advanced_search');
+Route::get('/analytics', function () {
+    return view('analytics');
+})->name('analytics');
 
 
 /*

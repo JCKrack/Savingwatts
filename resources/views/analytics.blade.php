@@ -2,7 +2,7 @@
 @section('title') Advanced Search @endsection
 @section('content')
 <div class="container mt-5">
-	<h1 class="display-4">Advanced Search</h1>
+	<h1 class="display-4">Watts Analysis</h1>
 	<div class="row mt-5">
 		<div class="col-sm-12 col-md-4 col-lg-3 col-xl-3">
 			<!-- Card form filter -->
@@ -59,7 +59,9 @@
 @section('scripts')
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker7').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+			minDate: moment().max(moment().subtract(30, 'days'))
+		});
         $('#datetimepicker8').datetimepicker({
             useCurrent: false
         });
