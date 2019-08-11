@@ -96,5 +96,5 @@
 @endsection
 
 @section('scripts')
-<script src="/js/index.js"></script>
+<script src="/js/scripts/dashboard.js"></script>
 @endsection
