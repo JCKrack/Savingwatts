@@ -94,3 +94,7 @@
   </div>
 </div>
 @endsection
+
+@section('scripts')
+<script src="/js/index.js"></script>
+@endsection
