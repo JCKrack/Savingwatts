@@ -37,6 +37,11 @@
                             >
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('devices') }}" class="nav-link"
+                                >Devices</a
+                            >
+                        </li>
+                        <li class="nav-item">
                             <a
                                 href="{{ route('advanced_search') }}"
                                 class="nav-link"
