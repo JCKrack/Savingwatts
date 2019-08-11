@@ -11,7 +11,7 @@
 	</div>
 	<div class="row my-2">
 		<div class="col-sm-6 col-lg-4 mb-3">
-			<div class="card">
+			<div class="card btn" onclick="redirectDevice()">
 				<div class="card-body">
 					<h3 class="card-title text-center">_deviceName_</h3>
 					<div class="d-flex justify-content-center">
@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="col-sm-6 col-lg-4 mb-3">
-			<div class="card">
+			<div class="card btn" onclick="redirectDevice()">
 				<div class="card-body">
 					<h3 class="card-title text-center">_deviceName_</h3>
 					<div class="d-flex justify-content-center">
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div class="col-sm-6 col-lg-4 mb-3">
-			<div class="card">
+			<div class="card btn" onclick="redirectDevice()">
 				<div class="card-body">
 					<h3 class="card-title text-center">_deviceName_</h3>
 					<div class="d-flex justify-content-center">
@@ -47,7 +47,7 @@
 			</div>
 		</div>
 		<div class="col-sm-6 col-lg-4 mb-3">
-			<div class="card">
+			<div class="card btn" onclick="redirectDevice()">
 				<div class="card-body">
 					<h3 class="card-title text-center">_deviceName_</h3>
 					<div class="d-flex justify-content-center">
@@ -60,7 +60,7 @@
 			</div>
 		</div>
 		<div class="col-sm-6 col-lg-4 mb-3">
-			<div class="card">
+			<div class="card btn" onclick="redirectDevice()">
 				<div class="card-body">
 					<h3 class="card-title text-center">_deviceName_</h3>
 					<div class="d-flex justify-content-center">
@@ -72,7 +72,7 @@
 			</div>
 		</div>
 		<div class="col-sm-6 col-lg-4 mb-3">
-			<div class="card">
+			<div class="card btn" onclick="redirectDevice()">
 				<div class="card-body">
 					<h3 class="card-title text-center">_deviceName_</h3>
 					<div class="d-flex justify-content-center">
@@ -86,5 +86,12 @@
 	</div>
 	
 </div>
+@endsection
 
+@section('scripts')
+<script>
+function redirectDevice() {
+	window.location.href = "/devices/1";
+}
+</script>
 @endsection
