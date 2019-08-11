@@ -35,3 +35,4 @@ Route::get('/', function () {
 */
 
 Route::resource('devices', 'DeviceController');
+Route::get('/devices', 'DeviceController@index')->name('devices');
