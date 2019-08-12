@@ -6,6 +6,8 @@ use App\Device;
 use App\Appliance;
 use App\Room;
 use App\Site;
+use App\Measurement;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DeviceApi extends Controller
@@ -15,9 +17,33 @@ class DeviceApi extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getValuesToChart(Request $request)
     {
-        $devices = Device::all();
+        //Get Dates 
+        $dates = Measurement::select('created_at')
+            ->where('device_id',$request->deviceId)
+            ->orderBy('created_at','DESC')
+            ->get();
+        //Get Device Name
+        $deviceName = Device::select('device_uuid')
+            ->where('id',$request->deviceId)
+            ->get();
+        //get Measure for device
+        $array = [];
+        $measurements = Measurement::select('measure','created_at')
+            ->where('device_id',$request->deviceId)
+            ->orderBy('created_at','DESC')
+            ->take(10)
+            ->get();
+        foreach ($measurements as $measurement) {
+            array_push($array, $measurement->measure);
+        }
+
+        $series = [
+            'name' => $deviceName[0]->device_uuid,
+            'data' => $array            
+        ];
+        /*$devices = Device::all();
         $list = array();
 
         foreach ($devices as $device) {
@@ -57,9 +83,61 @@ class DeviceApi extends Controller
             
         }
 
-        return array('devices' => $list);
+        return array('devices' => $list);*/
+        $array = [
+            'dates' => $dates,
+            'series' => [$series]
+        ];
+        return $array;
     }
+    public function getDeviceData(Request $request){
+        if((int)Carbon::now()->format('d') > 15){
+            $currentMonth = Carbon::now()->format('Y-m');
+            $nextMonth = Carbon::now()->addMonth(1)->format('Y-m');
+        }else
+        {
+            $currentMonth = Carbon::now()->subMonth(1)->format('Y-m');
+            $nextMonth = Carbon::now()->format('Y-m');    
+        }
+        //StartEnd debera tomarlo de la configuracion
+        $startEnd = 15;
+        $months = 1;
+        $daysInMonth = Carbon::now()->daysInMonth;
+        $measurements = Measurement::all();
 
+        //Location
+        $location = Room::select('rooms.room_name')
+            ->where('devices.id',$request->deviceId)
+            ->join('appliances','appliances.room_id','rooms.id')
+            ->join('devices','devices.appliance_id','appliances.id')
+        ->get();
+
+        //getDeviceName
+        $deviceName = Device::select('device_uuid','device_status')
+            ->where('id',$request->deviceId)
+            ->get();
+
+        //Uptime
+        
+        //Watts totales
+        $totalWatts = Measurement::where('device_id',$request->deviceId)
+            ->whereBetween('created_at',[
+            new Carbon($currentMonth.'-'.$startEnd.' 00:00:00'),
+            new Carbon($nextMonth.'-'.$startEnd.' 23:59:59')
+        ])->sum('measure');
+
+        ///Total a pagar
+        $bill = (($totalWatts / 1000) * 0.617)/30;
+        $array = [
+            'totalWatts' => $totalWatts,
+            'bill' => $bill,
+            'deviceName' => $deviceName[0]->device_uuid,
+            'status' => $deviceName[0]->device_status,
+            'location' => $location[0]->room_name,
+            'deviceId' => $request->deviceId
+        ];
+        return $array;
+    }
     /**
      * Show the form for creating a new resource.
      *
