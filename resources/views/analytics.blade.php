@@ -14,9 +14,12 @@
 						<!-- Devices section -->
 						<p class="card-text font-weight-bold">Devices</p>
 						<div class="form-check">
+							<!-- Devices active -->
 							@foreach($devices as $device)
-								<label for="" class="form-check-label mr2"><input type="checkbox" class="form-check-input" name="device[]" value="{{ $device->device_uuid }}">{{ $device->device_uuid }}</label><br>
+								<label for="" class="btn form-check-label mr2 p-0" onclick="setSelect('{{ $device->device_uuid }}')"><input id="{{ $device->device_uuid }}" type="checkbox" class="btn form-check-input" name="device[]" value="{{ $device->device_uuid }}" onclick="setSelect('{{ $device->device_uuid }}')">{{ $device->device_uuid }}</label><br>
 							@endforeach
+							<!-- Device inactive -->
+							<label for="" class="btn form-check-label mr2 p-0 text-muted" onclick="setSelect('123Fan')"><input id="123Fan" type="checkbox" class="btn form-check-input" name="123Fan" value="" onclick="setSelect('123Fan')">123Fan</label><br>
 						</div>
 						<!-- Watts filter section -->
 						<p class="card-text font-weight-bold mt-4">Watts</p>
@@ -65,6 +68,8 @@
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker7').datetimepicker({
+			//defaultDate: moment().subtract(29, 'days'),
+			format: "LT",
 			minDate: moment().max(moment().subtract(30, 'days')),
 			maxDate: moment(),
 			icons: {
@@ -72,7 +77,8 @@
 			}
 		});
         $('#datetimepicker8').datetimepicker({
-			useCurrent: false,
+			//defaultDate: moment(),
+			format: "LT",
 			maxDate: moment(),
 			icons: {
 				time: "fa fa-clock"
