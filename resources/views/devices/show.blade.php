@@ -6,16 +6,23 @@
 	<div class="row">
 		<!-- Device Info -->
 		<div class="col-sm-6 col-md-6 col-lg-9 align-self-center">
-			<h1 class="display-4"> {{ $device->device_uuid }}</h1>
-			<h4 class="">Location: _room_</h4>
+			<h1 class="display-4" id="deviceName"> {{ $array['deviceName'] }}</h1>
+			<h4 class="" id="locationRoom">Location: {{ $array['location'] }}</h4>
 		</div>
 		<!-- Status -->
 		<div class="col-sm-6 col-md-6 col-lg-3">
 			<div class="p">
 				<div class="h4 text-center d-none d-sm-block">Current Status</div>
-				<div class="alert alert-success text-center">
-					<span class="iconify" data-icon="ant-design:play-circle-outline" data-inline="true"></span> Running
-				</div>
+				@if($array['status'] == "Active")
+					<div class="alert alert-success text-center" id="deviceStatus">
+						<span class="iconify" data-icon="ant-design:play-circle-outline" data-inline="true"></span> Running
+					</div>
+				@endif
+				@if($array['status'] == "Desactive")
+					<div class="alert alert-dark text-center">
+						<span class="iconify" data-icon="ant-design:play-circle-outline" data-inline="true"></span> Stopped
+					</div>
+				@endif
 			</div>
 		</div>
 	</div>
@@ -25,7 +32,7 @@
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title text-center">Watts Usage</h4>
-					<h1 class="display-4 text-center">1,200</h1>
+					<h1 class="display-4 text-center" id="totalWatts">{{ $array['totalWatts'] }}</h1>
 					<p class="card-text text-center">Watts</p>
 				</div>
 			</div>
@@ -34,7 +41,7 @@
 			<div class="card">
 				<div class="card-body">
 					<h4 class="card-title text-center">Current Charges</h4>
-					<h1 class="display-4 text-center">$72.00</h1>
+					<h1 class="display-4 text-center" id="totalBill">{{ number_format($array['bill'],2) }}</h1>
 					<p class="card-text text-center">Mexican Pesos</p>
 				</div>
 			</div>
@@ -73,4 +80,10 @@
 	
 </div>
 
+@endsection
+@section('scripts')
+<script type="text/javascript" src="/js/scripts/devices.js"></script>
+<script>
+	prepareData({{ $array['deviceId'] }});
+</script>
 @endsection

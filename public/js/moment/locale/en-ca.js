@@ -24,7 +24,7 @@
         weekdaysShort: "Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),
         weekdaysMin: "Su_Mo_Tu_We_Th_Fr_Sa".split("_"),
         longDateFormat: {
-            LT: "HH:mm",
+            LT: "YYYY-MM-DD HH:mm",
             LTS: "h:mm:ss A",
             L: "YYYY-MM-DD",
             LL: "MMMM D, YYYY",
